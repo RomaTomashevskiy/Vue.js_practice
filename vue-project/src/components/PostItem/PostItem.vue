@@ -1,30 +1,30 @@
 <template>
     <li class="post">
        <div>
-            <p class="post_name"><strong>Name:</strong> {{ todo.name }}</p>
-            <p class="post_description"><strong>Description:</strong> {{ todo.description }}</p>
+            <p class="post_name"><strong>Title:</strong> {{ post.title }}</p>
+            <p class="post_description"><strong>Body:</strong> {{ post.body }}</p>
        </div>
 
         <div>
-            <MyButton>Delete</MyButton>
+            <MyButton 
+                class="btn"
+                @click="$emit('remove', post)"
+                >
+                Delete
+            </MyButton>
         </div>
     </li>
 </template>
 
 <script>
-import MyButton from './UI/MyButton.vue';
 
 export default {
-    components: {
-        MyButton
-    },
     props: {
-        todo: {
+        post: {
             type: Object,
             required: true
         },
     },
-    components: { MyButton }
 }
 </script>
 
@@ -41,9 +41,5 @@ export default {
     align-items: center;
     justify-content: space-between;
 }
-.delete_btn{
-        padding: 5px 10px;
-        background: rgb(5, 175, 218);
-        cursor: pointer;
-    }
+
 </style>

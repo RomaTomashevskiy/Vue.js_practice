@@ -1,5 +1,5 @@
 <template>
-    <input :value="value" type="text" class="input" @input="updateValue" >
+    <input :value="value" type="text"  @input="updateValue" >
 </template>
 
 <script>
@@ -18,10 +18,5 @@
 </script>
 
 <style  scoped>
-.input {
-    width: 500px;
-    border: 1px solir aqua;
-    padding: 10px 15px;
-    margin-top: 15px;
-}
+    
 </style>

@@ -3,12 +3,12 @@
         <h2>Create Post</h2>
         <form class="form" @submit.prevent>
             <MyInput 
-            v-model:value="todo.name" 
+            v-model:value.trim="todo.title" 
             placeholder="Name..." 
             class="input" 
             />
             <MyInput 
-            v-model:value="todo.description" 
+            v-model:value.trim="todo.body"  
             placeholder="Description..." 
             class="input" 
             />
@@ -18,42 +18,34 @@
 </template>
 
 <script>
-import MyButton from './UI/MyButton.vue';
-import MyInput from './UI/MyInput.vue';
-
 
 export default {
-    components: {
-        MyButton, MyInput
-    },
-    
     data() {
         return {
             todo: {
-                name: "",
-                description: ""
+                title: "",
+                body: ""
             },
         };
     },
     methods: {
         createPost() {
-            if (this.todo.name.trim() === "") {
+            if (this.todo.title === "") {
                 return alert(`Please ,enter name your post`);
             }
-            else if (this.todo.description.trim() === "") {
+            else if (this.todo.body === "") {
                 return alert(`Please ,enter description your post`);
             }
             ;
             this.todo.id = new Date();
-            this.todo.isDone = false;
             this.$emit("create", this.todo);
             this.todo = {
-                name: "",
-                description: ""
+                title: "",
+                body: ""
             };
         },
     },
-    components: { MyButton }
+
 }   
 </script>
 
@@ -69,6 +61,12 @@ export default {
     display: inline-block;
     display: flex;
     flex-direction: column;
+}
+.input {
+    width: 500px;
+    border: 1px solir aqua;
+    padding: 10px 15px;
+    margin-top: 15px;
 }
 
 
